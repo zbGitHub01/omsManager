@@ -2,7 +2,18 @@
   "compilerOptions": {
     "composite": true,
     "module": "esnext",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "skipLibCheck": true ,// 忽略所有的声明文件（ *.d.ts）的类型检查。
+    "baseUrl": "./", // 设置baseUrl来告诉编译器到哪里去查找模块。所有非相对模块导入都会被当做相对于 baseUrl。,
+    "isolatedModules": true, // 将每个文件作为单独的模块
+    "types": ["vite/client"], // 添加要包含的类型声明文件名列表，只有在这里列出的模块的声明文件才会被加载进来
+    "paths": {  // 模块名到基于 baseUrl的路径映射的列表。
+      "@/*": ["src/*"],
+      "views/*": ["src/views/*"],
+      "components/*": ["src/components/*"],
+      "assets/*": ["src/assets/*"]
+    },
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts"],
+  "exclude": ["node_modules","dist"],
 }
